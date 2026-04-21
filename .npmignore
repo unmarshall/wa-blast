@@ -1,0 +1,16 @@
+# TypeScript source — not needed in npm package (dist/ is published instead)
+src/
+tsconfig.json
+
+# Dev tooling
+.github/
+
+# Runtime artifacts
+binaries/
+dist/*.map
+
+# Test files and local state
+*.csv
+results_*.json
+*_report_*.json
+.env

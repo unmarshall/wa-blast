@@ -1,5 +1,6 @@
 dist/
 node_modules/
+binaries/
 *.js.map
 *.d.ts
 results_*.json
