@@ -44,7 +44,6 @@ export interface RunConfig {
   batchPauseMin: number
   batchPauseMax: number
   unconfirmedTimeoutMs: number
-  statusCollectionWindowMs: number
   resume: boolean
 }
 

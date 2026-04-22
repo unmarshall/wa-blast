@@ -114,7 +114,6 @@ program
       batchPauseMin: opts.batchPauseMin,
       batchPauseMax: opts.batchPauseMax,
       unconfirmedTimeoutMs: 86_400_000, // 24h
-      statusCollectionWindowMs: 60_000,  // 60s
       resume: opts.resume,
     }
 

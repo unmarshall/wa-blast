@@ -7,7 +7,6 @@ import { attach } from '../whatsapp/statusTracker.js'
 import { sendAll } from './sender.js'
 import { generate } from '../report/reporter.js'
 import { printSummary } from '../report/table.js'
-import { sleep } from '../utils/delay.js'
 import { logger } from '../utils/logger.js'
 
 export async function run(config: RunConfig): Promise<void> {
@@ -64,15 +63,9 @@ export async function run(config: RunConfig): Promise<void> {
   // 6. Send all messages
   await sendAll(queue, config, sock, state, onMessageSent)
 
-  // 7. Wait briefly for delivery receipts to arrive
-  if (!shutdownRequested && config.statusCollectionWindowMs > 0) {
-    logger.info(`Waiting ${config.statusCollectionWindowMs / 1000}s for delivery receipts... (Ctrl+C to skip)`)
-    await sleep(config.statusCollectionWindowMs)
-  }
-
   if (shutdownRequested) return
 
-  // 8. Mark still-pending 'sent' entries as unconfirmed (if past timeout)
+  // 7. Mark still-pending 'sent' entries as unconfirmed (if past timeout)
   stateManager.unconfirmedSweep(state, config.unconfirmedTimeoutMs)
   await stateManager.persist(state, config.outputPath)
 
