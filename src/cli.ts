@@ -25,6 +25,9 @@ program
   .option('--output <path>', 'Output state file path', `results_${Date.now()}.json`)
   .option('--delay-min <ms>', 'Min delay between messages in ms', v => parsePositiveInt(v, '--delay-min'), 3000)
   .option('--delay-max <ms>', 'Max delay between messages in ms', v => parsePositiveInt(v, '--delay-max'), 8000)
+  .option('--batch-size <n>', 'Number of messages before a long pause', v => parsePositiveInt(v, '--batch-size'), 20)
+  .option('--batch-pause-min <ms>', 'Min long pause duration in ms', v => parsePositiveInt(v, '--batch-pause-min'), 30_000)
+  .option('--batch-pause-max <ms>', 'Max long pause duration in ms', v => parsePositiveInt(v, '--batch-pause-max'), 60_000)
   .option('--resume', 'Resume from a previous run (uses --output file as checkpoint)', false)
   .action(async (opts: {
     csv: string
@@ -34,6 +37,9 @@ program
     output: string
     delayMin: number
     delayMax: number
+    batchSize: number
+    batchPauseMin: number
+    batchPauseMax: number
     resume: boolean
   }) => {
     // Validate CSV path
@@ -104,9 +110,9 @@ program
       outputPath,
       delayMin: opts.delayMin,
       delayMax: opts.delayMax,
-      batchSize: 20,
-      batchPauseMin: 30_000,
-      batchPauseMax: 60_000,
+      batchSize: opts.batchSize,
+      batchPauseMin: opts.batchPauseMin,
+      batchPauseMax: opts.batchPauseMax,
       unconfirmedTimeoutMs: 86_400_000, // 24h
       statusCollectionWindowMs: 60_000,  // 60s
       resume: opts.resume,
