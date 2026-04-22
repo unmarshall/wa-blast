@@ -90,7 +90,7 @@ wa-blast --csv contacts.csv --msg "Hello {name}!"
 | `--output <path>` | State/output file path | `results_<timestamp>.json` |
 | `--delay-min <ms>` | Minimum delay between messages | `3000` |
 | `--delay-max <ms>` | Maximum delay between messages | `8000` |
-| `--batch-size <n>` | Number of messages before a long pause | `20` |
+| `--batch-size <n>` | Number of messages before a long pause | `5` |
 | `--batch-pause-min <ms>` | Minimum long pause duration | `30000` |
 | `--batch-pause-max <ms>` | Maximum long pause duration | `60000` |
 | `--resume` | Resume a previous interrupted run | `false` |
@@ -164,7 +164,7 @@ A summary table is also printed to the terminal:
 
 ## Rate Limiting
 
-Default settings send messages with a 3–8 second random delay between each, and a 30–60 second pause every 20 messages. All of these are configurable via `--delay-min`, `--delay-max`, `--batch-size`, `--batch-pause-min`, and `--batch-pause-max`.
+Default settings send messages with a 3–8 second random delay between each, and a 30–60 second pause every 5 messages. All of these are configurable via `--delay-min`, `--delay-max`, `--batch-size`, `--batch-pause-min`, and `--batch-pause-max`.
 
 > **Warning:** Aggressive bulk messaging risks WhatsApp account suspension. Use conservative delays and ensure recipients expect your message.
 

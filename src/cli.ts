@@ -25,7 +25,7 @@ program
   .option('--output <path>', 'Output state file path', `results_${Date.now()}.json`)
   .option('--delay-min <ms>', 'Min delay between messages in ms', v => parsePositiveInt(v, '--delay-min'), 3000)
   .option('--delay-max <ms>', 'Max delay between messages in ms', v => parsePositiveInt(v, '--delay-max'), 8000)
-  .option('--batch-size <n>', 'Number of messages before a long pause', v => parsePositiveInt(v, '--batch-size'), 20)
+  .option('--batch-size <n>', 'Number of messages before a long pause', v => parsePositiveInt(v, '--batch-size'), 5)
   .option('--batch-pause-min <ms>', 'Min long pause duration in ms', v => parsePositiveInt(v, '--batch-pause-min'), 30_000)
   .option('--batch-pause-max <ms>', 'Max long pause duration in ms', v => parsePositiveInt(v, '--batch-pause-max'), 60_000)
   .option('--resume', 'Resume from a previous run (uses --output file as checkpoint)', false)
