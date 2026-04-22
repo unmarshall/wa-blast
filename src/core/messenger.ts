@@ -10,6 +10,19 @@ export async function send(
   const timestamp = new Date().toISOString()
 
   try {
+    // Check if the number is registered on WhatsApp before attempting to send
+    const results = await sock.onWhatsApp(contact.jid)
+    const result = results?.[0]
+    if (!result?.exists) {
+      logger.warn({ phone: contact.phone }, 'Number not registered on WhatsApp')
+      return {
+        ...contact,
+        status: 'failed',
+        error: 'Number not registered on WhatsApp',
+        timestamp,
+      }
+    }
+
     const sent = await sock.sendMessage(contact.jid, { text })
 
     if (!sent) {
