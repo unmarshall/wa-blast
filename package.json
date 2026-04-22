@@ -1,6 +1,6 @@
 {
   "name": "wa-blast",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CLI tool to send personalized WhatsApp messages to contacts from a CSV file",
   "type": "module",
   "bin": {
