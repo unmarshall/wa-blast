@@ -16,10 +16,49 @@ Avoids the native WhatsApp broadcast feature (which requires recipients to have 
 
 ## Prerequisites
 
-- Node.js 18+
 - An active WhatsApp account (personal or business)
+- Node.js 20+ (only required for the npm and source options below)
 
 ## Installation
+
+Choose the option that best suits you.
+
+### Option 1 — npm (recommended)
+
+Installs `wa-blast` globally as a command available anywhere on your system.
+
+```bash
+npm install -g wa-blast
+```
+
+Run it:
+
+```bash
+wa-blast --csv contacts.csv --msg "Hello {name}!"
+```
+
+### Option 2 — Standalone binary (no Node.js required)
+
+Download the pre-built binary for your OS from the [latest GitHub Release](https://github.com/unmarshall/wa-blast/releases/latest). No Node.js installation needed.
+
+**macOS / Linux:**
+
+```bash
+chmod +x wa-blast-*-macos-x64   # or linux-x64
+./wa-blast-*-macos-x64 --csv contacts.csv --msg "Hello {name}!"
+```
+
+**Windows:**
+
+Open a terminal (cmd or PowerShell) in the download folder:
+
+```
+wa-blast-*-win-x64.exe --csv contacts.csv --msg "Hello {name}!"
+```
+
+### Option 3 — Build from source
+
+Clone the repo, install dependencies, and compile TypeScript yourself.
 
 ```bash
 git clone https://github.com/unmarshall/wa-blast.git
@@ -28,10 +67,16 @@ npm install
 npm run build
 ```
 
-## Usage
+Run it:
 
 ```bash
 node dist/index.js --csv contacts.csv --msg "Hello {name}!"
+```
+
+## Usage
+
+```bash
+wa-blast --csv contacts.csv --msg "Hello {name}!"
 ```
 
 ### Options
@@ -63,16 +108,16 @@ Phone numbers should be in E.164 format (e.g. `+15551234567`). Set `WA_BLAST_COU
 
 ```bash
 # Send immediately
-node dist/index.js --csv contacts.csv --msg "Hi {name}, just checking in!"
+wa-blast --csv contacts.csv --msg "Hi {name}, just checking in!"
 
 # Schedule for 9am
-node dist/index.js --csv contacts.csv --msg-file message.txt --schedule 09:00
+wa-blast --csv contacts.csv --msg-file message.txt --schedule 09:00
 
 # Custom delays (more conservative)
-node dist/index.js --csv contacts.csv --msg "Hello {name}" --delay-min 5000 --delay-max 15000
+wa-blast --csv contacts.csv --msg "Hello {name}" --delay-min 5000 --delay-max 15000
 
 # Resume an interrupted run
-node dist/index.js --csv contacts.csv --msg "Hello {name}" --output results_123.json --resume
+wa-blast --csv contacts.csv --msg "Hello {name}" --output results_123.json --resume
 ```
 
 ## First Run — QR Code
