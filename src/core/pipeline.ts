@@ -82,4 +82,5 @@ export async function run(config: RunConfig): Promise<void> {
   logger.info({ reportPath }, 'Final report saved')
 
   await cleanup()
+  process.exit(0)
 }
