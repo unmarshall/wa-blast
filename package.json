@@ -1,10 +1,10 @@
 {
   "name": "wa-blast",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "CLI tool to send personalized WhatsApp messages to contacts from a CSV file",
   "type": "module",
   "bin": {
-    "wa-blast": "./dist/index.js"
+    "wa-blast": "dist/index.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -56,7 +56,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/unmarshall/wa-blast.git"
+    "url": "git+https://github.com/unmarshall/wa-blast.git"
   },
   "homepage": "https://github.com/unmarshall/wa-blast#readme",
   "bugs": {
