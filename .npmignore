@@ -1,12 +1,14 @@
 # TypeScript source — not needed in npm package (dist/ is published instead)
 src/
 tsconfig.json
+tsconfig.pkg.json
 
 # Dev tooling
 .github/
 
 # Runtime artifacts
 binaries/
+dist-pkg/
 dist/*.map
 
 # Test files and local state

@@ -1,12 +1,7 @@
-import makeWASocket, {
-  DisconnectReason,
-  Browsers,
-  fetchLatestWaWebVersion,
-  type WASocket,
-} from '@whiskeysockets/baileys'
 import qrcodeTerminal from 'qrcode-terminal'
 import { getAuthState, clearSession } from './session.js'
 import { logger } from '../utils/logger.js'
+import type { WASocket } from '@whiskeysockets/baileys'
 
 const CONNECT_TIMEOUT_MS = 90_000
 
@@ -16,6 +11,9 @@ export interface WAConnection {
 }
 
 export async function connect(): Promise<WAConnection> {
+  const { default: makeWASocket, DisconnectReason, Browsers, fetchLatestWaWebVersion } =
+    await import('@whiskeysockets/baileys')
+
   // Fetch latest WA Web version to avoid version-mismatch rejections
   const { version, isLatest } = await fetchLatestWaWebVersion({})
   logger.info({ version: version.join('.'), isLatest }, 'WA Web version')

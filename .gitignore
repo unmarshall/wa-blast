@@ -1,4 +1,5 @@
 dist/
+dist-pkg/
 node_modules/
 binaries/
 *.js.map

@@ -1,13 +1,12 @@
 import type { WASocket } from '@whiskeysockets/baileys'
-import { proto } from '@whiskeysockets/baileys'
 import type { AppState, MessageResult } from '../types/index.js'
 import { persist } from '../state/stateManager.js'
 import { logger } from '../utils/logger.js'
 
-// Baileys proto status numeric values
-const STATUS_DELIVERED = proto.WebMessageInfo.Status.DELIVERY_ACK   // 2
-const STATUS_READ = proto.WebMessageInfo.Status.READ                  // 3
-const STATUS_PLAYED = proto.WebMessageInfo.Status.PLAYED              // 4
+// Baileys proto status numeric values (stable constants from proto.WebMessageInfo.Status)
+const STATUS_DELIVERED = 2  // DELIVERY_ACK
+const STATUS_READ = 3       // READ
+const STATUS_PLAYED = 4     // PLAYED
 
 export function attach(
   sock: WASocket,
